@@ -1,0 +1,25 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://cdn.acwing.com/static/jquery-ui-dist/jquery-ui.min.css">
+    <script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/main_page.css' %}">
+</head>
+ 
+<body style="margin: 0">
+    <div id = "main_page_1", class = "main_page_1">
+        <div id = "main_page_1_title" class="main_page_1_title">
+                 Ecode blogs
+        </div>
+        <div id = "main_page_1_menu" class = "main_page_1_menu">
+            <div id = "Main_page_01">
+                </div>
+            <script type="module">
+                import {Main_page_1_menu} from "{% static 'js/src/main_page/main_page_1_menu.js'%}"; 
+                $(document).ready(function(){
+                    let main_page_1_menu = new Main_page_1_menu("Main_page_01");
+                });
+            </script>
+        
+        </div>
+    </div>
+</body>

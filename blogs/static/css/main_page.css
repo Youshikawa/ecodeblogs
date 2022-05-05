@@ -1,0 +1,45 @@
+.main_page_1 {
+    background-image:url("https://img.tt98.com/d/2020/2020052917003041/5ed0c37546f31.jpg");
+    background-size:100% 100%;
+    height: 100%;
+    width: 100%;
+    size: 100%;
+}
+.main_page_1_title {
+    -webkit-text-stroke: 1px rgb(0, 85, 182);  
+    -webkit-text-fill-color : transparent;
+    font-size: 500%; 
+    color:rgb(0, 86, 156);
+    text-align: center;
+}
+.main_page_1_menu {
+    border-radius:1vh;
+    background-color:aliceblue;
+    position: relative;
+    top:10%;
+    left:2.5%;
+    width: 94%;
+    height: 5%;
+    opacity: 90%;
+}
+.main_page_1_menu_login {
+    position: relative;
+    left:89%;
+    top:-30%;
+    width: 6%;
+    height: 100%;
+    background-color: #d6d6d6; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 150%;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.main_page_1_menu_login:hover {
+    background-color: #004ddb;
+    color: white;
+}
