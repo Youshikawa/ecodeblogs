@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'article.apps.ArticleConfig',
     'blogs.apps.BlogsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -59,6 +60,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "blogs/")],
+        # 'DIRS' :  [os.path.join(BASE_DIR, "article/")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -11,7 +11,7 @@ class Main_page_1_menu_login
         );
         this.$logout = $(
             `
-            <a href = "login/logout/">
+            <a href = "/">
                 <botton id = "main_page_1_menu_logout" class = "main_page_1_menu_login"> logout </botton>
             </a>
             `
@@ -24,6 +24,22 @@ class Main_page_1_menu_login
     }   
     start() {
         this.get_info();
+        let outer = this;
+        this.$logout.click(function(){
+            outer.logout();
+        });
+    }
+    logout() {
+        let outer = this;
+        $.ajax({
+            url : "login/logout/",
+            type: "GET",
+            success:function(resp) {
+                if (resp.result == "success") {
+                    location.reload();
+                }
+            }
+        })
     }
     logined() {
         this.$login.hide();
@@ -44,11 +60,9 @@ class Main_page_1_menu_login
                 } else {
                     outer.unlogin();
                 }
-                console.log(res);
             }
             
         });
-        return res;
     }
 }
 

@@ -8,10 +8,11 @@
 <body style="margin: 0">
     <div id = "main_page_1", class = "main_page_1">
         <div id = "main_page_1_title" class="main_page_1_title">
-                 Ecode blogs
+            <br>
         </div>
         <div id = "main_page_1_menu" class = "main_page_1_menu">
-            <div id = "Main_page_01">
+            <div class="main_page_1_menu_title" class = "main_page_1_layout"><nobr>Welcome to ecodeblogs system!</nobr></div>
+            <div id = "Main_page_01" class="main_page_1_layout">
                 </div>
             <script type="module">
                 import {Main_page_1_menu} from "{% static 'js/src/main_page/main_page_1_menu.js'%}"; 
@@ -19,7 +20,14 @@
                     let main_page_1_menu = new Main_page_1_menu("Main_page_01");
                 });
             </script>
-        
+        </div>
+        <div class = "main_page_2"> 
+        <div class="main_page_1_articles_item">
+        {% for article in articles %} 
+            <h1 class="main_page_1_articles_tag"> {{ article.title }}<br> uid : {{article.uid}} </h1>
+        {% endfor %}
         </div>
     </div>
+    </div>
+    
 </body>

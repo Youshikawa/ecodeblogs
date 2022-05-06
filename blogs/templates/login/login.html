@@ -1,7 +1,18 @@
 {% load static %}
 <head>
+    <link rel="stylesheet" href="https://cdn.acwing.com/static/jquery-ui-dist/jquery-ui.min.css">
+    <script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
-<body>
-    login
+<body class="main">
+    <div class="main_pane">
+        <div id="main_pane_login"> 
+        </div>
+        <script type="module" >
+            import {Login_page} from "{% static 'js/src/login_page/login_page.js'%}"; 
+            $(document).ready(function(){
+                    let login_page = new Login_page("main_pane_login");
+            });
+        </script>
+    </div>
 </body>

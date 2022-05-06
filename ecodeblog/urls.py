@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from blogs.views.login.index import index
 urlpatterns = [
+    path('article/', include('article.urls.index', namespace = 'article')),
     path('admin/', admin.site.urls),
     path('', include('blogs.urls.index')),
     ]

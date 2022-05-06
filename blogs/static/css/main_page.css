@@ -1,7 +1,8 @@
 .main_page_1 {
-    background-image:url("https://img.tt98.com/d/2020/2020052917003041/5ed0c37546f31.jpg");
-    background-size:100% 100%;
-    height: 100%;
+    background-image:url("http://ecodelab.cn:8000/static/image/main_page_background.png");
+    background-color: rgb(208, 208, 208);
+    background-size:100%;
+    height: 200%;
     width: 100%;
     size: 100%;
 }
@@ -28,13 +29,13 @@
     top:-30%;
     width: 6%;
     height: 100%;
-    background-color: #d6d6d6; /* Green */
+    background-color: #0c05e1; /* Green */
     border: none;
     color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 150%;
+    font-size: 130%;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
@@ -42,4 +43,42 @@
 .main_page_1_menu_login:hover {
     background-color: #004ddb;
     color: white;
+}
+.main_page_1_menu_title {
+    height: 0%;
+    font-size: 130%;
+    position: relative;
+    left:5%;
+}
+.main_page_1_articles_item {
+    position:absolute;
+			left:10%;
+			top:50%;
+			width: 80%;
+			height: 70%;
+			box-shadow: 0 4px 8px 0 #aaa;
+            font-size: 3vh;
+			text-align: center;
+			background-color: aliceblue;
+			border-radius:1vh;
+            opacity: 90%;
+}
+.main_page_1_articles_tag {
+    position: relative;
+    background: #ffffff;
+    border-radius: 6px 6px 6px 6px;
+    border-width: 50%;
+    box-shadow: 0 0 0 1px #dfdfdf, 1px 1px 6px 1px rgba(222, 222, 222, 0.5);
+    color: #000000;
+    font-family:"微软雅黑", "宋体", "黑体", Arial;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    height: 10%;
+    left: 10%;
+    width: 80%;
+    line-height: 25px;
+    margin: 18px 0 !important;
+    padding: 8px 0 5px 5px;
+    opacity: 100%;
 }
