@@ -59,7 +59,7 @@ ROOT_URLCONF = 'ecodeblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "blogs/")],
+        'DIRS': [os.path.join(BASE_DIR, "")],
         # 'DIRS' :  [os.path.join(BASE_DIR, "article/")],
         'APP_DIRS': True,
         'OPTIONS': {

@@ -8,4 +8,4 @@ class ArticlePostForm(forms.ModelForm):
         #指定数据模型来源
         model = ArticlePost
         #包含的字段
-        fields = ('Title','userid','username','body')
+        fields = ('Title','body')
