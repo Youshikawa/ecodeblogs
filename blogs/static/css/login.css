@@ -1,8 +1,8 @@
 .main_pane {
     position: absolute;
     background-color: aliceblue;
-    height: 600px;
-    width: 500px;
+    height: 70%;
+    width: 30%;
     left: 50%;
     top:50%;
     transform: translate(-50%, -50%);
@@ -17,23 +17,24 @@
     background-color: rgb(230, 230, 230);
 }
 .login_page_pane_title {
-    font-size: 40px;
+    font-size: 170%;
     font-family:Arial, Helvetica, sans-serif;
 }
 .login_page_input{
+    height: 6%;
     outline-style: none ;
     border: 1px solid #ccc; 
     border-radius: 1.3vh;
-    padding: 14px 14px;
+    padding: 4% 4%;
     width: 80%;
-    font-size: 15px;
+    font-size: 70%;
     text-align: center;
     font-family: "Microsoft soft";
     box-shadow: inset 1px 1px 1px rgba(204, 197, 197,.5),
     inset -2px -2px 2px rgba(204, 197, 197,.5);
 }
 .login_page_button {
-    width: 400px;
+    width: 80%;
     background-color: #0c05e1; /* Green */
     border-radius: 1.2vh;
     border: none;
@@ -51,7 +52,7 @@
     color: white;
 }
 .to_register {
-    width: 400px;
+    width: 80%;
     background-color: #ae6c00; /* Green */
     border-radius: 1.2vh;
     border: none;
@@ -67,4 +68,10 @@
 .to_register:hover {
     background-color: #db8e00;
     color: white;
+}
+.login_page_input:focus{
+    border-color: #003ffb !important;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(17, 0, 168, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(0, 12, 184, 0.6);
 }
