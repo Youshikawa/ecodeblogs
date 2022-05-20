@@ -1,14 +1,23 @@
 from django.http import HttpResponse
-from .froms import ArticlePostForm
-from django.shortcuts import render , resirect
+from article.views.forms import ArticlePostForm
+from django.shortcuts import render ,redirect
 from django.contrib.auth.models import User
 from article.models import ArticlePost
+from django.db.models import Max
 import math
 
 #新建文章
 
-
-def article_create(request,userid):
+def get_uid() :
+    maxn = 0
+    articles = ArticlePost.objects.all()
+    for article in articles :
+        maxn = max(int(article.uid), maxn)
+    return maxn
+def article_create(request):
+    user = request.user
+    if not user.is_authenticated: # 如果改用户没有登录
+        return redirect('/login/')
     #判断用户是否提交表单数据
     if request.method == "POST" :
         #将提交的数据赋值到表单实例中
@@ -18,13 +27,27 @@ def article_create(request,userid):
             new_article = article_post_form.save(commit = False)
             #保存数据
             #保存数据到id为userid的用户
-            new_article.author = User.objects.get(uid = userid)
+            new_article.author = user
             #获取文章uid值：最大的uid值+1
-            new_article.uid = str(Math.max(article.objects.all(), key = uid) + 1)
+            # new_article.uid = str(max(ArticlePost.objects.all(), key = uid) + 1)
+            
+            tlist = ArticlePost.objects.all().aggregate(Max("uid"))
+            temp = ""
+            if(tlist == []):
+                temp = "0"
+            else:
+                temp = str(tlist["uid__max"])
+                if(not temp.isdigit()):
+                    temp = "0"
+            print(temp)
+            temp = str(int(temp) + 1)
+            #new_article.uid = str(int(ArticlePost.objects.all().aggregate(Max("uid"))) + 1)
+            new_article.uid = str(temp)
+            #new_article.uid = 'test'
             #保存文章
             new_article.save()
             #返回文章列表
-            return redirect("article:article_list")
+            return redirect("/")
         else:
             #提交数据有误，输出ERROR
             return HttpResponse("Submit EEROR!")

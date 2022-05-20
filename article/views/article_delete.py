@@ -3,12 +3,16 @@ from article.models import ArticlePost
 from django.shortcuts import render , resirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-
+from blogs.models.blogs_user.blogs_user import Blogs_user
 #删除文章
 
 def article_delete(request , article_id , user_id):
+    user = request.user
+    users = Blogs_user.objects.filter(user=user)
+    if (users.exist() == false) return false
+    blogs_user = users[0]
     #获取uid删除文章
-    article = ArticlePost.objects.get(id = article_id)
+    article = ArticlePost.objects.get(uid = article_id)
     #获取当前文章的用户uid
     userUID = article.author
     if user_id == userUID or user_id == 0:

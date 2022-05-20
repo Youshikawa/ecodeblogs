@@ -10,4 +10,5 @@ def article_list(request):
     # 需要传递给模板（templates）的对象
     context = { 'articles': articles }
     # render函数：载入模板，并返回context对象
+    context = {article : "article"}
     return render(request, 'templates/list.html', context) 

@@ -22,9 +22,10 @@
             </script>
         </div>
         <div class = "main_page_2"> 
-        <div class="main_page_1_articles_item">
+        <div class="main_page_1_articles_item" style=" overflow: auto;">
+            <a style = "text-decoration: none;color: blue;" href="/article/article_create/" class = "main_page_1_articles_b"> <h1 class="main_page_1_articles_tag" id = "main_page_1_articles_tag" style="color: blue"> +  New article.. </h1> </a>
         {% for article in articles %} 
-            <h1 class="main_page_1_articles_tag"> {{ article.title }}<br> uid : {{article.uid}} </h1>
+            <a style = "text-decoration: none;" href="/article/detail/{{ article.uid }}" class = "main_page_1_articles_a"> <h1 class="main_page_1_articles_tag" id = "main_page_1_articles_tag" style = "color: black;"> 　{{ article.title }}<br> 　Author : {{article.author}} 　<b style="text-decoration: none; color:gray">　　{{ article.body|slice:'30' }}....</b></h1> </a>
         {% endfor %}
         </div>
     </div>

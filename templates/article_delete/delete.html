@@ -1,0 +1,10 @@
+<!--删除文章-->
+<div class="container">
+    <div class="row">
+        ...
+        <div class="col-12 alert alert-success">作者：{{ article.author }}
+         · <a href="{% url "article:article_delete" article.id %}">删除文章</a>
+        </div>
+        ...
+    </div>
+</div>
