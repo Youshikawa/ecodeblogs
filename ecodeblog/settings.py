@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',# 富文本编辑器
+    'comment', # 评论
 ]
 ROOT_URLCONF = 'ecodeblog.urls'
 MIDDLEWARE = [

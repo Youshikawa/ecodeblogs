@@ -1,0 +1,53 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+</head>
+
+
+<body  style="margin: 0;background-color: rgb(255, 255, 255);height: 200%;"  >
+    <form method="post" action="./{{blogs_user.uid}}"  enctype="multipart/form-data">{% csrf_token %}
+        {% csrf_token %}
+    <div class="nav">
+        <!--   头部导航 navigator     -->
+        <a href="/" style="color: black;"><h4 class="title"> &nbsp  &nbsp ecodeblogs</h4></a>
+        <button type="submit" class="btn btn-primary">Done</button>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+                <div class="form-group">
+                    <!-- 标签 -->
+                    <label for="open_name">NickName：</label>
+                    <!-- 文本框 -->
+                    <input type="text" style="width: 40%;" class="form-control form-control_title" id="open_name" name="open_name" placeholder = "please enter your NickName" value="{{blogs_user.open_name}}">
+                   
+                    <br>
+                    <br>
+                   
+                    <!-- <input type="text" style="width: 40%;" class="form-control form-control_title" id="photo" name="photo" placeholder = "icon url here" value="{{blogs_user.photo}}"> -->
+                    <br>
+                    <br>
+                    {% if blogs_user.photo %}
+                     <label for="photo">Icon：</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <img src="{{ blogs_user.photo.url }}" style="max-width: 20%; border-radius: 15%;" class="col-md-4">
+                            {% else %}
+                                <h5 class="col-md-4">No icon</h5>
+                    {% endif %}
+                        <!-- photo -->
+                        <div class="form-group">
+                            <label for="photo">upload icon</label>
+                            <input type="file" class="form-control-file" name="photo" id="photo">
+                        </div>  
+                    <h3>More options comming soon (^ ^)</h3>
+                </div>
+                <br>
+                <HR style="color : aliceblue; position:absolute; left: 7% ;" width="90%" SIZE=1>
+                <br><br><br>
+        </div>
+    </div>
+    </form>
+</body>

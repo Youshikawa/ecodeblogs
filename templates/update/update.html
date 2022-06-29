@@ -1,1 +1,44 @@
-<!--文章更新：大体跟create.html相同，但是要传递文章的旧信息-->
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+</head>
+
+
+<body  style="margin: 0;background-color: rgb(255, 255, 255);height: 200%;"  >
+    <form method="post" action="./{{article.uid}}">
+        {% csrf_token %}
+    <div class="nav">
+        <!--   头部导航 navigator     -->
+        <a href="/" style="color: black;"><h4 class="title"> &nbsp  &nbsp ecodeblogs</h4></a>
+        <a href="https://markdown.com.cn/" style="color: blue;position:absolute;right:13%;"class = "a1">How to use markdown?</a>
+        <button type="submit" class="btn btn-primary">Done</button>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <!-- 提交文章的表单 -->
+                <!-- 文章标题 -->
+                <div class="form-group">
+                    <!-- 标签 -->
+                    <label for="title">Title：</label>
+                    <!-- 文本框 -->
+                    <input type="text" class="form-control form-control_title" id="title" name="title" placeholder = "please enter article title" value="{{article.title}}">
+                </div>
+                <br>
+                <HR style="color : aliceblue; position:absolute; left: 7% ;" width="90%" SIZE=1>
+                <br><br><br>
+                <!-- 文章正文 -->
+                <div class="form-group">
+                    <label for="body"></label>
+                    <!-- 文本区域 -->
+                    <textarea type="text" rows = "100" class="form-control form-control_text" id="body" name="body" rows="12" placeholder = "Article content here....">{{article.body}}</textarea>
+                </div>
+                <!-- 提交按钮 -->
+        </div>
+    </div>
+    </form>
+</body>

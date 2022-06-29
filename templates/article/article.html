@@ -1,6 +1,10 @@
 {% load static %}
 <head>
     <link rel="stylesheet" href="{% static 'css/article.css' %}">
+    <link rel="stylesheet" href="{% static 'css/monokai.css' %}">
+    <link rel="stylesheet" href="https://cdn.acwing.com/static/jquery-ui-dist/jquery-ui.min.css">
+    <script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
+    <script src="{% static 'layer/layer.js' %}"></script>
 </head>
 
 {% block content %}
@@ -8,16 +12,32 @@
     <div class="nav">
         <!--   头部导航 navigator     -->
         <a href="/" style="color: black;"><h4 class="title"> &nbsp  &nbsp ecodeblogs</h4></a>
+        {{updated|safe}}
+        {{delete|safe}}
+        <a href="/article/article_create/"><button style = "top:8% ;font-size:100%;" class="btn-primary"> <b style="font-size:175%;">+</b> New </button> </a>
     </div>
-    <br><br><br>
+    <br><br><br>    
     <div class="container" style="margin: 0">
         <!--  内容区-->
-        <div class="container-left">
+        <div class="container-left" >
             <!--  个人信息-->
-            <div class="card">
-                <img src="img/photo.jpg" alt="photo" class="avatar">
-                <h3>{{ article.author }}</h3>
-                <!--                新的浏览器窗口打开新链接-->
+            <div class="card"style="position:fixed;">
+                <img src="{{user.photo.url}}" alt="photo" class="avatar" style="Max-width:300px;max-height:300px;">
+                <div class="col-9">
+                    <h2 class="mt-4 mb-4" align="center"><strong>{{ article.title }}</strong></h2>
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+                <!-- 新增的目录 -->
+                <div class="col-3 mt-4">
+                    <h4><strong>目录</strong></h4>
+                    <hr>
+                    <div>
+                        {{ toc|safe }}
+                    </div>
+                </div>
+                <h3>{{ user.open_name }}</h3>
+                <!--新的浏览器窗口打开新链接-->
                 <div class="counter">
                     <span>Articles</span>
                     <span>Categories</span>
@@ -27,19 +47,46 @@
                     <span>N/A</span>
                 </div>
             </div>
-    
+            
         </div>
         <div class="container-right">
             <div class="blog-content">
                 <h3>{{ article.title }}</h3>
-                <div class="date">up_time</div>
+                <div class="date">Last updated : {{article.updated}}</div>
                 <!--博客正文-->
                 <p>{{ article.body|safe }}</p>
             </div>
-    
         </div>
+
     </div>
-    
+    <form 
+        style="display:none;" 
+        id="safe_delete"
+        action="/article/article_delete/{{article.uid}}"
+        method="POST"
+         >
+        {% csrf_token %}
+        <button type="submit">发送</button>
+    </form>
+    <script>
+        // 删除文章的函数
+        function confirm_delete() {
+            console.log("clk");
+            // 调用layer弹窗组件
+            layer.open({
+                // 弹窗标题
+                title: "Convince delete",
+                // 正文
+                content: "Are you sure delete this article?",
+                btn: ['Delete'],
+                // 点击确定按钮后调用的回调函数
+                yes: function(index, layero) {
+                    $('form#safe_delete button').click();
+                    
+                },
+            })
+        }
+    </script>
     </body>
 
 {% endblock content %}

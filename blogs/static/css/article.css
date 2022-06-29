@@ -79,6 +79,18 @@ html,body{
     box-shadow: inset 1px 1px 1px rgba(204, 197, 197,.5),
     inset -2px -2px 2px rgba(204, 197, 197,.5);
 }
+.a1 {
+    color: #000000;
+    border-radius: 1vh;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    background-color: #dce1e6;
+}
+
+.a1:active {
+    background-color: #bec3c6;
+}
 .btn-primary {
     width: 5%;
     height: 80%;
@@ -98,6 +110,48 @@ html,body{
 }
 .btn-primary:hover {
     background-color: #00800f;
+    color: white;
+}
+.btn-delete {
+    width: 5%;
+    height: 80%;
+    background-color: #cb0000; /* Green */
+    position: absolute;
+    right:4%;
+    border-radius: 1.2vh;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100%;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.btn-delete:hover {
+    background-color: #ff0000;
+    color: white;
+}
+.btn-up {
+    width: 5%;
+    height: 80%;
+    background-color: #d8d102; /* Green */
+    position: absolute;
+    right:4%;
+    border-radius: 1.2vh;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100%;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.btn-up:hover {
+    background-color: #e1dd01;
     color: white;
 }
 .form-control_text {
@@ -167,9 +221,12 @@ html,body{
     padding: 30px;
 }
 .card .avatar{
-    margin-left: 50px;
-    width: 140px;
+    width: 50%;
+    position: relative;
+    top: 30%;
+    left: 25%;
     border-radius: 50%;
+    box-shadow: #000000;
 }
 .card h3{
     text-align: center;

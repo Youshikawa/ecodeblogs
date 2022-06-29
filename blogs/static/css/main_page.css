@@ -15,14 +15,14 @@
 }
 .main_page_1_menu {
     border-radius:1vh;
-    background-color:aliceblue;
-    position: relative;
-    top:10%;
+    position: absolute;
+    top:3%;
     left:2.5%;
     width: 94%;
     height: 5%;
     opacity: 90%;
 }
+
 .main_page_1_menu_login {
     position: relative;
     left:89%;
@@ -55,7 +55,7 @@
 			left:10%;
 			top:50%;
 			width: 80%;
-			height: 70%;
+			height: 125%;
 			box-shadow: 0 4px 8px 0 #aaa;
             font-size: 3vh;
 			text-align: center;
@@ -68,7 +68,8 @@
     background: #ffffff;
     border-radius: 6px 6px 6px 6px;
     border-width: 50%;
-    box-shadow: 0 0 0 1px #dfdfdf, 1px 1px 6px 1px rgba(222, 222, 222, 0.5);
+    box-shadow: 0 0 0 1px #d6d6d6, 1px 1px 6px 1px rgba(222, 222, 222, 0.5);
+    transition: all 200ms ease-in-out 0s;
     color: #000000;
     font-family:"微软雅黑", "宋体", "黑体", Arial;
     font-size: 18px;
@@ -81,4 +82,97 @@
     margin: 18px 0 !important;
     padding: 8px 0 5px 5px;
     opacity: 100%;
+}
+.main_page_1_articles_tag:hover {
+    color: #004ddb;
+    background: #f7f7f7;
+}
+.a1{
+    color: white;
+    text-decoration:none;
+    font-size: 133%;
+    height: 100%;
+}
+.a1:hover {
+    color: rgb(192, 225, 255);
+}
+.a1::after{
+    /*position: relative;
+    bottom: 0;*/
+
+    position: absolute;
+    content: "";/*content用来定义插入内容必须有值至少是空*/
+    display: block; /*默认情况下伪元素的display的默认值是inline可以通过设置block来改变其显示。*/
+    transition: all 200ms ease-in-out 0s;/*有过渡的效果*/
+    cursor: pointer;
+    border-top: 3px solid rgb(108, 181, 245);
+    margin: 0 auto;/*从中间向两边扩开*/
+    width: 0;
+}
+.a1:hover::after{
+    width: 100%;
+}
+
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* 容器 <div> - 需要定位下拉内容 */
+.dropdown {
+    width: 4%;
+    position:absolute; right:4%;
+    transition: all 200ms ease-in-out 0s;
+    display: inline-block;
+}
+
+/* 下拉内容 (默认隐藏) */
+.dropdown_content {
+    transition: all 200ms ease-in-out 0s;
+    display: none;
+    opacity: 0;
+    position: absolute;
+    background-color: #f9f9f9;
+    border-radius: 1vh;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* 下拉菜单的链接 */
+.dropdown_content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    transition: all 200ms ease-in-out 0s;
+    display: block;
+}
+
+/* 鼠标移上去后修改下拉菜单链接颜色 */
+.dropdown_content a:hover {background-color: #f1f1f1;border-radius: 1vh;}
+
+/* 在鼠标移上去后显示下拉菜单 */
+.dropdown:hover .dropdown_content {
+    transition: all 200ms ease-in-out 0s;
+    opacity: 1.0;
+    display: block;
+}
+
+/* 当下拉内容显示后修改下拉按钮的背景颜色 */
+.dropdown:hover .dropbtn {
+}
+.btn{
+    text-decoration:none;
+    background-color: white;   
+    color: #000000; 
+    border-radius:0.4vh ;
+    transition: all 200ms ease-in-out 0s;
+    width: 1vh;
+    box-shadow: 0 0 0 1px #dfdfdf, 1px 1px 6px 1px rgba(222, 222, 222, 0.5);
+} 
+.btn:hover {
+    color: rgb(0, 141, 226);
+    box-shadow: 0 0 0 1px rgb(0,141,226), 1px 1px 1px 1px rgb(0, 141, 236);
 }

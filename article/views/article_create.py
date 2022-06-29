@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from article.models import ArticlePost
 from django.db.models import Max
 import math
+import logging
 
 #新建文章
 
@@ -29,28 +30,24 @@ def article_create(request):
             #保存数据到id为userid的用户
             new_article.author = user
             #获取文章uid值：最大的uid值+1
-            # new_article.uid = str(max(ArticlePost.objects.all(), key = uid) + 1)
-            
-            tlist = ArticlePost.objects.all().aggregate(Max("uid"))
-            temp = ""
-            if(tlist == []):
-                temp = "0"
-            else:
-                temp = str(tlist["uid__max"])
-                if(not temp.isdigit()):
-                    temp = "0"
-            print(temp)
+            data = ArticlePost.objects.all()
+            '''
+            for dt in data:
+                temp = max(temp,int(dt.uid))
+            '''
+            temp = data.first().uid # 第一条uid：即最后插入的uid，保证为uid数据库中uid的最大值
+            #print(temp)
             temp = str(int(temp) + 1)
-            #new_article.uid = str(int(ArticlePost.objects.all().aggregate(Max("uid"))) + 1)
             new_article.uid = str(temp)
             #new_article.uid = 'test'
             #保存文章
             new_article.save()
             #返回文章列表
-            return redirect("/")
+            #return redirect("/")
+            return redirect('/article/detail/' + new_article.uid)
         else:
             #提交数据有误，输出ERROR
-            return HttpResponse("Submit EEROR!")
+            return HttpResponse("Submit ERROR!")
     else:
         #创建表单类的实例
         article_post_form = ArticlePostForm()

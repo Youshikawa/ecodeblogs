@@ -9,10 +9,13 @@ def getinfo(request):
             })
     else:
         blogs_user = Blogs_user.objects.get(user=user) # 找到与session中Default_user 对于的 Blogs_user.
+        open_name = blogs_user.open_name
+        if len(open_name) > 7 :
+            open_name = open_name[:7] + "..."
         return JsonResponse({ # 返回登入的状态，并且返回这个Blogs_user 的各项信息
             "result":"success",
             "username":blogs_user.user.username,
-            "photo":blogs_user.photo,
+           # "photo":blogs_user.photo,
             "uid": blogs_user.uid,
-            "open_name" : blogs_user.open_name, 
+            "open_name" : open_name, 
         })
