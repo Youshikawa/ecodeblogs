@@ -1,5 +1,5 @@
 .main_page_1 {
-    background-image:url("http://ecodelab.cn:8000/static/image/main_page_background.png");
+    background-image:url("/static/image/main_page_background.png");
     background-color: rgb(208, 208, 208);
     background-size:100%;
     height: 200%;
@@ -53,7 +53,7 @@
 .main_page_1_articles_item {
     position:absolute;
 			left:10%;
-			top:50%;
+			top:72%;
 			width: 80%;
 			height: 125%;
 			box-shadow: 0 4px 8px 0 #aaa;

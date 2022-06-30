@@ -1,6 +1,8 @@
 {% load static %}
 <head>
-    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+    <link rel="stylesheet" href="{% static 'css/article.css' %}"> 
+    <link rel="stylesheet" href="https://cdn.acwing.com/static/jquery-ui-dist/jquery-ui.min.css">
+    <script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
 </head>
 
 
@@ -30,13 +32,19 @@
                 </div>
                 <br>
                 <HR style="color : aliceblue; position:absolute; left: 7% ;" width="90%" SIZE=1>
-                <br><br><br>
+                <br><br><br><br><br>
                 <!-- 文章正文 -->
-                <div class="form-group">
+                <div class="form-group" style="position:absolute; left:2%;width:100%;" >
                     <label for="body"></label>
                     <!-- 文本区域 -->
-                    <textarea type="text" rows = "100" class="form-control form-control_text" id="body" name="body" rows="12" placeholder = "Article content here...."></textarea>
+                    <!-- <textarea type="text" rows = "100" class="form-control form-control_text" id="body" name="body" rows="12" placeholder = "Article content here...."></textarea> -->
+                    {{article_post_form.media}}
+                    {{article_post_form.body}}
+                    <script>
+                        $(".django-ckeditor-widget").removeAttr('style');
+                    </script>
                 </div>
+               
                 <!-- 提交按钮 -->
         </div>
     </div>

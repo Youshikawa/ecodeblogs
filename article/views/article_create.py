@@ -46,8 +46,10 @@ def article_create(request):
             #return redirect("/")
             return redirect('/article/detail/' + new_article.uid)
         else:
-            #提交数据有误，输出ERROR
-            return HttpResponse("Submit ERROR!")
+            #提交数据有误，返回当前界面
+            article_post_form = ArticlePostForm()
+            context = {'article_post_form':article_post_form}
+            return redirect('templates/create/create.html',context)
     else:
         #创建表单类的实例
         article_post_form = ArticlePostForm()

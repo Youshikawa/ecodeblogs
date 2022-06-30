@@ -28,10 +28,15 @@ def article_update(request, uid):
             article.save()
             return redirect('/article/detail/' + article_id)
         else:
-            return HttpResponse("submit ERROR!")
+            article_post_form = ArticlePostForm(initial={'body': article.body,})
+            # 赋值上下文，将 article 文章对象也传递进去，以便提取旧的内容
+            context = { 'article': article, 'article_post_form': article_post_form }
+            #context = {'article_post_form': article_post_form }
+            #return redirect(request, 'templates/update/update.html',context)
+            return render(request, 'templates/update/update.html',context)
     else:
         # 创建表单类实例
-        article_post_form = ArticlePostForm()
+        article_post_form = ArticlePostForm(initial={'body': article.body,})
         # 赋值上下文，将 article 文章对象也传递进去，以便提取旧的内容
         context = { 'article': article, 'article_post_form': article_post_form }
         #context = {'article_post_form': article_post_form }

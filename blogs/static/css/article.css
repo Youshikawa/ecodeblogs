@@ -246,3 +246,9 @@ html,body{
     justify-content: space-around;
     /*两边有空隙*/
 }
+.django-ckeditor-widget{
+    position: absolute;
+    width: 200%;
+    height: 100%;
+   
+}
