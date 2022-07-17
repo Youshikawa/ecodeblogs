@@ -1,0 +1,77 @@
+.main_pane {
+    position: absolute;
+    background-color: aliceblue;
+    height: 70%;
+    width: 30%;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 #aaa;
+    font-size: 3vh;
+    text-align: center;
+    background-color: aliceblue;
+    border-radius:1.4vh;
+    opacity: 90%;    
+}
+.main {
+    background-color: rgb(230, 230, 230);
+}
+.login_page_pane_title {
+    font-size: 170%;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.login_page_input{
+    height: 6%;
+    outline-style: none ;
+    border: 1px solid #ccc; 
+    border-radius: 1.3vh;
+    padding: 4% 4%;
+    width: 80%;
+    font-size: 70%;
+    text-align: center;
+    font-family: "Microsoft soft";
+    box-shadow: inset 1px 1px 1px rgba(204, 197, 197,.5),
+    inset -2px -2px 2px rgba(204, 197, 197,.5);
+}
+.login_page_button {
+    width: 80%;
+    background-color: #0c05e1; /* Green */
+    border-radius: 1.2vh;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 130%;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.login_page_button:hover {
+    background-color: #004ddb;
+    color: white;
+}
+.to_register {
+    width: 80%;
+    background-color: #ae6c00; /* Green */
+    border-radius: 1.2vh;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 130%;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.to_register:hover {
+    background-color: #db8e00;
+    color: white;
+}
+.login_page_input:focus{
+    border-color: #003ffb !important;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(17, 0, 168, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(0, 12, 184, 0.6);
+}

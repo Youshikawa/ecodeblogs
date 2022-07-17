@@ -1,9 +1,14 @@
+# -*- coding: utf-8 -*-
 from .article_list import article_list
 from article.models import ArticlePost
 from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from article.views.forms import ArticlePostForm
+
+import sys
+import importlib
+importlib.reload(sys)
 
 #更新文章
 #article_id为文章id，user_id是用户id
@@ -20,11 +25,15 @@ def article_update(request, uid):
     if userUID != user:
         return HttpResponse("ERROR:You can't update this passage")
     if request.method == "POST" :
-        article_post_form = ArticlePostForm(data  = request.POST)
+        article_post_form = ArticlePostForm(request.POST, request.FILES)
         #判断文章是否符合模型需求
         if article_post_form.is_valid():
             article.title = request.POST['title']
             article.body = request.POST['body']
+            article_post_form_cd = article_post_form.cleaned_data
+            if 'cover' in request.FILES:
+                article.cover = article_post_form_cd['cover']
+            article.catagories = article_post_form_cd['catagories']
             article.save()
             return redirect('/article/detail/' + article_id)
         else:

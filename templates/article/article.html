@@ -1,172 +1,164 @@
 {% load static %}
 <head>
-    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+    <link rel = "icon" href="/static/image/icon/ecodelab_ico.png">
+
     <link rel="stylesheet" href="{% static 'css/monokai.css' %}">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+    
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.acwing.com/static/jquery-ui-dist/jquery-ui.min.css">
     <script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
     <script src="{% static 'layer/layer.js' %}"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          extensions: ["tex2jax.js"],
+          jax: ["input/TeX", "output/HTML-CSS"],
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true
+          },
+          "HTML-CSS": { fonts: ["TeX"] }
+        });
+      </script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+      </script>
 </head>
-
 {% block content %}
-<body style="margin: 0;background-color: rgb(239, 235, 235);height: 300%;" >
+<body style="margin: 0; background-color:rgb(237, 239, 244);height: 180%;">
+<div class="element_set_1" style="position:relative; overflow-y:visible; height: 55.6%; margin: 0;background-color:rgb(237, 239, 244);">
     <div class="nav">
-        <!--   头部导航 navigator     -->
-        <a href="/" style="color: black;"><h4 class="title"> &nbsp  &nbsp ecodeblogs</h4></a>
-        {{updated|safe}}
-        {{delete|safe}}
+        <a href="/" style="color: black;"><img src = "/static/logo/LOGO.png" style="position:relative;top:0px;width: 150px;height:30px;"></a>
         <a href="/article/article_create/"><button style = "top:8% ;font-size:100%;" class="btn-primary"> <b style="font-size:175%;">+</b> New </button> </a>
+        <form 
+            style="display:none;" 
+            id="safe_delete"
+            action="/article/article_delete/{{article.uid}}"
+            method="POST"
+        >
+        {% csrf_token %}
+            <button type="submit">Submit</button>
+        </form>
+        <script>
+            // 删除文章的函数
+            function confirm_delete() {
+                console.log("clk");
+                // 调用layer弹窗组件
+                layer.open({
+                    // 弹窗标题
+                    title: "Convince delete",
+                    // 正文
+                    content: "Are you sure delete this article?",
+                    btn: ['Delete'],
+                    // 点击确定按钮后调用的回调函数
+                    yes: function(index, layero) {
+                        $('form#safe_delete button').click();
+                        
+                    },
+                })
+            }
+        </script>
     </div>
-    <br><br><br>    
-    <div class="container" style="margin: 0">
-        <!--  内容区-->
-        <div class="container-left" >
-            <!--  个人信息-->
-            <div class="card"style="position:fixed;">
-                <img src="{{user.photo.url}}" alt="photo" class="avatar" style="Max-width:300px;max-height:300px;">
-                <div class="col-9">
-                    <h2 class="mt-4 mb-4" align="center"><strong>{{ article.title }}</strong></h2>
-                    <div class="alert alert-success">
-                    </div>
-                </div>
-                <!-- 新增的目录 -->
-                <div class="col-3 mt-4">
-                    <h4><strong>Content</strong></h4>
-                    <hr>
-                    <div>
-                        {{ toc|safe }}
-                    </div>
-                </div>
-                <h3>{{ user.open_name }}</h3>
-                <!--新的浏览器窗口打开新链接-->
-                <div class="counter">
-                    <span>Articles</span>
-                    <span>Categories</span>
-                </div>
-                <div class="counter">
-                    <span>N/A</span>
-                    <span>N/A</span>
-                </div>
+    <div class="container" style="">
+        <div class="container_info">
+            <div class = "user_info">
+                <br><br>
+                <img src="{{user.photo.url}}" alt="photo" class="user_avatar">
+                <br>
             </div>
-            
+            <h2 class="mt-4 mb-4" align="center"><strong>{{ user.open_name }}</strong></h2>
+            <div>
+                <br>
+                <a href = "/user/homepage/{{user.uid}}/all/"class="userinfo_btn"  text-decoration = "none">More</a>
+            </div>
         </div>
-        <div class="container-right" >
-            <div class="blog-content">
-                <h3>{{ article.title }}</h3>
-                <div class="date">Last updated : {{article.updated}}</div>
-                <!--博客正文-->
+        <div class = "content">
+            <h4 style="position: relative;top:0;color: #9f8bff;"> <strong>Content</strong></h2>
+                <hr>
+            <div class="content_toc">
+                {{ toc|safe }}
+            </div>
+        </div>
+        <div class="container_body">
+            <br>
+            {{delete|safe}}
+            {{updated|safe}}
+
+            <div class="date" style=""><b style="color:#b9bfff;margin:2%;background-color:#e8e8ff; width: 50%; border-radius: 5vh;padding: 0.7em;text-align: center;">{{catagories}}</b></div>
+            
+            <br>
+            <h3 style = "text-align: center;">{{ article.title }}</h3>
+            <br>
+            <div style = "margin: 5%; ">    
                 <p>{{ article.body|safe }}</p>
             </div>
         </div>
-
     </div>
-    <form 
-        style="display:none;" 
-        id="safe_delete"
-        action="/article/article_delete/{{article.uid}}"
-        method="POST"
-         >
-        {% csrf_token %}
-        <button type="submit">Submit</button>
-    </form>
-    
-    <script>
-        // 删除文章的函数
-        function confirm_delete() {
-            console.log("clk");
-            // 调用layer弹窗组件
-            layer.open({
-                // 弹窗标题
-                title: "Convince delete",
-                // 正文
-                content: "Are you sure delete this article?",
-                btn: ['Delete'],
-                // 点击确定按钮后调用的回调函数
-                yes: function(index, layero) {
-                    $('form#safe_delete button').click();
-                    
-                },
-            })
-        }
-    </script>
-    <br>
-    <br>
-    <div class="container-right" style="position :absolute;right: 0%;height: 70%;overflow-x: hidden;">
-    <hr>
-    <!--提交评论-->
-    {% if request.user.is_authenticated %}
-        <div>
-            <form 
-                action="/comment/post-comment/{{article.uid}}" 
-                method="POST"
-            >
-            {% csrf_token %}
-            <br><br><br><br>
-            
-            <h2> &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspComment</h2>
-                <br>
-                <div class="form-group">
-                    <label for="body">
-                        <strong>
-                        </strong>
-                    </label>
-                    <!--<textarea 
-                        type="text" 
-                        class="form-control form-control_text" 
-                        style="width: 70%;"
-                        id="body" 
-                        name="body" 
-                        rows="2"></textarea>-->
-                    <div>
-                        {{ comment_form.media }}
-                        {{ comment_form.body }}
-                    </div>
+</div>
+<div class="element_set_2" style="position: relative;top:-6%;height: 40%;"> 
+    <div class="container">
+        <div class="comment">
+            {% if request.user.is_authenticated %}
+                <div style="position:relative;height:200px;">
+                    <form 
+                        action="/comment/post-comment/{{article.uid}}" 
+                        method="POST"
+                    >
+                        {% csrf_token %}
+                        <br>
+                        <div class="form-group">
+                            <div>
+                                {{ comment_form.media }}
+                                {{ comment_form.body }}
+                            </div>
+                        </div>
+                        <!-- 提交按钮 -->
+                            
+                        <button type="submit" class="submit_btn" style="position:relative;left:85%;"><strong>+</strong> Post</button>                  
+                    </form>
+                    <br>
+                    <br>
+                    <!-- <HR style="background-color : rgb(103, 103, 103); position:absolute; left: 7% ;height: 1.2px;" width="90%" > -->
                 </div>
-                <!-- 提交按钮 -->
-                     
-                <button type="submit" class="btn-up btn-primary " style="height: 37%;">Post</button>                  
-            </form>
-            <br>
-            <br>
-            <!-- <HR style="background-color : rgb(103, 103, 103); position:absolute; left: 7% ;height: 1.2px;" width="90%" > -->
-        </div>
-       
-        {% else %}
-        <br>
-        <h2 class="row justify-content-center" align="center">
-            Please reply after <a href="/login">login</a>
-        </h2>
-        <br>
-        {% endif %}
-       
-    <br><br><br><br><br><br><br><br><br>
-    <br><br>
-    <!-- 显示评论 -->
-    <!--<h4>共有条评论</h4>-->
-    <div>
-        {% for comment in comments %}
-            <hr style="opacity: 0.5;">
-            <!-- <hr style="position:absolute;border:none;background-color : rgb(194, 194, 194); width: 80% ;left:10%;height: 1px;" > -->
-            <p>
-                &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp
-                &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp
-                &nbsp&nbsp 
-                <strong style="color: pink">
-                    {{ comment.user.blogs_user.open_name }}
-                </strong>  at  
-                <span style="color: green">
-                    {{ comment.created|date:"Y-m-d H:i:s" }}
-                </span> :
-            </p>
-            <br>
             
-            <pre style="position: relative; font-family: inherit; font-size: 1em;left: 10%;">
-            {{ comment.body|safe }}</pre>
-        <br>
+                {% else %}
+                <br>
+                <h2 class="row justify-content-center" align="center">
+                    Please reply after <a href="/login">login</a>
+                </h2>
+                <br>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+            
+            <div class="comment_list">
+                {% for comment in comments %}
+                    <hr style="opacity: 0.5;">
+                    <!-- <hr style="position:absolute;border:none;background-color : rgb(194, 194, 194); width: 80% ;left:10%;height: 1px;" > -->
+                    <p>
+                        <strong style="color: rgb(0, 0, 0)">
+                            &nbsp&nbsp&nbsp&nbsp
+                            <img src="{{comment.user.blogs_user.photo.url}}" style="width: 55px;height:55px;border-radius:100vh;">
+                            &nbsp&nbsp&nbsp
+                            {{ comment.user.blogs_user.open_name }}
+                        </strong> 
+                    </p>
+                    <br>
+                    <pre style="position: relative; font-family: inherit; font-size: 1em;left: 10%;width: 70%;">
+                {{ comment.body|safe }}</pre>
+                <span style="color: rgb(147, 147, 147)">
+                    &nbsp&nbsp&nbsp&nbsp
+                    {{ comment.created|date:"Y-m-d H:i:s" }}
+                </span> 
+                <br>
         {% endfor %}
-     </div>
-    {% endblock content %}
+        <h5 style="color:#8f8bff ;"><strong>No More Comment...</strong></h5>
+        </div>
+
+        {% endif %}
+        </div>
     </div>
-    <br>
-    <br>
-    </body>
-    <!-- 发表评论 -->
+</div>
+</body>
+{% endblock content %}

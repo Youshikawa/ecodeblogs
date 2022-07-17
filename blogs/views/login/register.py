@@ -41,7 +41,7 @@ def register(request) :
     user.set_password(password)
     user.save()
     uid = create_uid()
-    Blogs_user.objects.create(user = user, photo = "https://tse1-mm.cn.bing.net/th/id/R-C.261fd27312a8586ced2c7f86af61e6cc?rik=kc%2b30zH5arnQ7g&riu=http%3a%2f%2fpic2.52pk.com%2ffiles%2f131026%2f1285603_150529_1.jpg&ehk=UnpVJNkvqUhG1lt4IxOEHRd1hnAhw%2fdwecDUmoKHJsw%3d&risl=&pid=ImgRaw&r=0", uid = uid, open_name = username)
+    Blogs_user.objects.create(user = user, photo = "/user_icon/default/default.png", uid = uid, open_name = username)
     login(request, user)
     return JsonResponse({
         "result" : "success" ,

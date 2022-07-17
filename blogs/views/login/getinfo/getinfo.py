@@ -17,5 +17,6 @@ def getinfo(request):
             "username":blogs_user.user.username,
            # "photo":blogs_user.photo,
             "uid": blogs_user.uid,
+            "photo": blogs_user.photo.url,
             "open_name" : open_name, 
         })

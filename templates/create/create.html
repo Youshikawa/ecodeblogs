@@ -1,52 +1,58 @@
 {% load static %}
 <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/article.css' %}"> 
     <link rel="stylesheet" href="https://cdn.acwing.com/static/jquery-ui-dist/jquery-ui.min.css">
     <script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
+    <link rel = "icon" href="/static/image/icon/ecodelab_ico.png">
 </head>
 
 
-<body  style="margin: 0;background-color: rgb(255, 255, 255);height: 200%;"  >
-    <form method="post" action=".">
-        {% csrf_token %}
-    <div class="nav">
-        <!--   头部导航 navigator     -->
-        <a href="/" style="color: black;"><h4 class="title"> &nbsp  &nbsp ecodeblogs</h4></a>
-        <a href="https://markdown.com.cn/" style="color: blue;position:absolute;right:13%;"class = "a1">How to use markdown?</a>
-        <button type="submit" class="btn btn-primary">Done</button>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <!-- 提交文章的表单 -->
-                <!-- 文章标题 -->
-                <div class="form-group">
-                    <!-- 标签 -->
-                    <label for="title">Title：</label>
-                    <!-- 文本框 -->
-                    <input type="text" class="form-control form-control_title" id="title" name="title" placeholder = "please enter article title">
-                </div>
-                <br>
-                <HR style="color : aliceblue; position:absolute; left: 7% ;" width="90%" SIZE=1>
-                <br><br><br><br><br>
-                <!-- 文章正文 -->
-                <div class="form-group" style="position:absolute; left:2%;width:100%;" >
-                    <label for="body"></label>
-                    <!-- 文本区域 -->
-                    <!-- <textarea type="text" rows = "100" class="form-control form-control_text" id="body" name="body" rows="12" placeholder = "Article content here...."></textarea> -->
-                    {{article_post_form.media}}
-                    {{article_post_form.body}}
-                    <script>
-                        $(".django-ckeditor-widget").removeAttr('style');
-                    </script>
-                </div>
-               
-                <!-- 提交按钮 -->
+<body  style="margin: 0;background-color: rgb(240, 240, 250);height: 200%;"  >
+    <div class="element_set_1" style="position:relative;">
+        <div class="nav">
+            <!--   头部导航 navigator     -->
+            <a href="/" style="color: black;"><img src = "/static/logo/LOGO.png" style="position:relative;top:0px;width: 150px;height:30px;"></a>
+            <a href="https://markdown.com.cn/" style="color: blue;position:absolute;right:13%;"class = "a1">How to use markdown?</a>
+        </div>
+        <div class="container">
+            <div class="editor_container">
+                <form method="post" action="." enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group" style="position:relative; top:67px;left:30px;">
+                        <div class="form-group_titile">
+                            <label for="title" style="color:rgb(158, 160, 255);">Title：</label>
+                            <input type="text" class="form-control_input" id="title" name="title" style="width:50%;" placeholder = "please enter article title">
+                        </div>
+                        <hr>
+                        <div class="form-group" style="position:relative; left:-2%;width:100%;" >
+                            <label for="body"></label>
+                            <!-- 文本区域 -->
+                            <!-- <textarea type="text" rows = "100" class="form-control form-control_text" id="body" name="body" rows="12" placeholder = "Article content here...."></textarea> -->
+                            {{article_post_form.media}}
+                            {{article_post_form.body}}
+                            <script>
+                                $(".django-ckeditor-widget").removeAttr('style');
+                            </script>
+                        </div>
+                        <br><br><br><br>
+                        <div class="form-group_titile">
+                            <label for="title" style="color:rgb(158, 160, 255);">Catagories:</label>
+                            <input type="text" class="form-control_input" id="catagories" name="catagories" style="width:30%;" placeholder = "please enter article catagories">
+                        </div>
+                        <br>
+                        <div class="form-group_cover">
+                            <label for="cover" style="color:rgb(158, 160, 255);" >Upload cover:&nbsp</label>
+                            <input type="file" class="form-control-file_fileinput" name="cover" id="cover" style="display:inline;">
+                        </div>
+                        <br><br><br><br>
+                        <div>
+                            <button type="submit" class="submit_btn" style="position:relative; left:43%;width:10%;">Done</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    </form>
 </body>

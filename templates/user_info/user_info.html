@@ -1,5 +1,7 @@
 {% load static %}
 <head>
+    <link rel = "icon" href="/static/image/icon/ecodelab_ico.png">
+
     <link rel="stylesheet" href="{% static 'css/article.css' %}">
 </head>
 
@@ -24,7 +26,9 @@
                     <label for="open_name">NickName：</label>
                     <!-- 文本框 -->
                     <input type="text" style="width: 40%;" class="form-control form-control_title" id="open_name" name="open_name" placeholder = "please enter your NickName" value="{{blogs_user.open_name}}">
-                   
+                    <br>
+                    <label for = "about">Introduce&nbsp：</label>
+                    <input type="text" style="width: 40%;" class="form-control form-control_title" id="about" name="about" placeholder = "please Introduce your self" value="{{blogs_user.about}}">
                     <br>
                     <br>
                    

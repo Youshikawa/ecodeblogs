@@ -20,6 +20,7 @@ def user_info(request, uid = ""):
         if blogs_user_form.is_valid():
             blogs_user_cd = blogs_user_form.cleaned_data
             blogs_user.open_name = blogs_user_cd["open_name"]
+            blogs_user.about = blogs_user_cd['about']
             if 'photo' in request.FILES:
                 blogs_user.photo = blogs_user_cd["photo"]
             # .....

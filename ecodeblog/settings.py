@@ -36,6 +36,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'article.apps.ArticleConfig',
     'blogs.apps.BlogsConfig',
+    'userblogs.apps.UserblogsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -147,8 +148,8 @@ CKEDITOR_CONFIGS = {
     # django-ckeditor默认使用default配置
     'default': {
         # 编辑器宽度自适应
-        'width':'800px',
-        'height':'150px',
+        'width':'500px',
+        'height':'100px',
         # tab键转换空格数
         'tabSpaces': 4,
         # 工具栏风格

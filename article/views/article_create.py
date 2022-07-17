@@ -22,7 +22,7 @@ def article_create(request):
     #判断用户是否提交表单数据
     if request.method == "POST" :
         #将提交的数据赋值到表单实例中
-        article_post_form = ArticlePostForm(data = request.POST)
+        article_post_form = ArticlePostForm(request.POST,request.FILES)
         #判断提交的数据是否满足模型的要求
         if article_post_form.is_valid():
             new_article = article_post_form.save(commit = False)
@@ -41,6 +41,12 @@ def article_create(request):
             new_article.uid = str(temp)
             #new_article.uid = 'test'
             #保存文章
+            article_post_form_cd = article_post_form.cleaned_data
+            if 'cover' in request.FILES:
+                new_article.cover = article_post_form_cd['cover']
+            else:
+                new_article.cover = 'blog_covers/default/type_blogs.png'
+            new_article.catagories = article_post_form_cd['catagories']
             new_article.save()
             #返回文章列表
             #return redirect("/")

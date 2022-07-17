@@ -1,0 +1,116 @@
+.banner {
+    background-color: gray;
+    background-image: url('/static/image/user_homepage_banner.jpg');
+    height: 50%;
+}
+.avatar {
+    position: relative;
+    text-align: center;
+    height: 130px;
+    width: 130px;
+    max-height: 40%;
+    max-width: 40%;
+    left: 50%;
+    top:39%;
+    transform: translate(-50%, -50%);
+    border-radius:400%; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.banner_username {
+    position: relative;
+    height: 130px;
+    max-height: 40%;
+    max-width: 40%;
+    left: 50%;
+    top:40%;
+    transform: translate(-50%, -50%);
+    border-radius:400%;     
+    color: white;
+}
+.cardBox {
+    width: 20%;
+    animation-name: appear_ani_1;
+    animation-duration: 1s;
+    height: 33%;
+    /* border-radius: 4vh; */
+    float: left;
+    margin-right: 15px;
+    margin-top: 100px;
+    margin-left: 50px;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, .15), 0 0 4px 0 rgba(0, 0, 0, .2), 0 12px 12px 0 rgba(0, 0, 0, .15);
+    transition: all 200ms ease-in-out 0s;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.cardBox img{
+    position: relative;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 900ms ease-in-out 0s;
+}
+.cardBox:hover img {
+    
+    width: 130%;
+    height: 130%;
+}
+.cardBox .bodyBox {
+    transition: all 800ms ease-in-out 0s;
+    position: relative;
+    background-color: white;
+    top: 0%;
+}
+.cardBox:hover .bodyBox {
+    position: relative;
+    background-color: white;
+    top: -15%;
+    height: 50%;
+}
+.cardBox:hover {
+    box-shadow: 0 0 18px 0 rgba(0, 0, 0, .1), 0 0 36px 0 rgba(0, 0, 0, .15), 0 36px 36px 0 rgba(0, 0, 0, .2);
+}
+.headerBox {
+    top:0;
+    background-color: rgb(225, 222, 222);
+    padding: 0px;
+    font-size: 15px;
+    height: 12%;
+}
+
+.bodyBox {
+    padding: 10px;
+}
+
+.bodyBox p {
+    margin-left: 5px;
+}
+
+.pagination {
+    animation-name: appear_ani_2;
+    animation-duration: 2s;
+}
+.catagories {
+    position: relative;
+    left: 50px;
+    top: 50px;
+}
+.catagories a {
+    transition-duration: 200ms;
+    transition: all 200ms ease-in-out 0;
+    padding-left: 10px;
+    color: rgb(172, 172, 255)
+}
+.catagories a:hover {
+    text-decoration: none;
+    color: rgb(104, 104, 253)
+}
+@keyframes appear_ani_1 {
+    from {width: 0;}
+    to {width: 20%;}
+  }
+
+  @keyframes appear_ani_2 {
+    from {opacity: 0;}
+    to {opacity: 1.0;}
+  }

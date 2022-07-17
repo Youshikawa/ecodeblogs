@@ -1,0 +1,86 @@
+{% load static %}
+<head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+    <link rel="stylesheet" href="{% static 'css/user_homepage.css' %}">
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel = "icon" href="/static/image/icon/ecodelab_ico.png">
+
+</head>
+
+<body style="margin: 0;overflow-x:hidden;">
+    <div class="banner_menu"> 
+        <a style = "color:white;"><a href = "/" style = "position:absolute; left:2%;top: 5%; height: 5%;" class = "a1"> <b>Back</b></a></a>
+    </div>
+    <div class="banner">
+        <img src="{{user.photo.url}}" alt="photo" class="avatar" style="Max-width:300px;max-height:300px;">
+        <div class = "banner_username"><h2 style="text-align: center;">{{user.open_name}}</h2></div>
+        <h4 style="text-align: center;position:relative;top:10px;color: beige;">{{user.about}}</h4>
+    </div>
+    <div class="content">
+        <div class="catagories">
+            <a href="/user/homepage/{{user.uid}}/all/"
+            {% if category == 'all' %} style="background-color: rgb(98, 66, 255);border-radius: 100vh;padding: 10px;" {% endif %}
+                > All </a>
+        {% for catagorie in catagories%}
+            <a  href="/user/homepage/{{user.uid}}/{{catagorie}}/"
+            {% if category == catagorie %} style="background-color: rgb(98, 66, 255);border-radius: 100vh;padding: 10px;" {% endif %}
+                > {{catagorie}} </a>
+        {% endfor%}
+        </div>
+        {% for article in articles %} 
+        {% if category == 'all' or category == article.catagories %}
+        <a href = "/article/detail/{{article.uid}}">
+            <div class="cardBox" >
+                <div style="height: 70%;overflow: hidden;"><img width="100%" height="100%" src="{{article.cover_url | default_if_none:'#'}}" draggable="false" /></div>
+                <div class="bodyBox">
+                    <h3 style=" font-family: Menlo,"Courier New" "> <strong>{{article.title}} <b style="font-size:10%;color:gray">{{ article.body|slice:'30' }}....</b> </strong></h3> 
+                </div>
+            </div>
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <br><br><br>
+    <div class="pagination row" style="width:200%; right: 50%;  bottom:0; margin-left: 40%;">
+        <div class="m-auto">
+            <span class="step-links">
+                <!-- 如果不是第一页，则显示上翻按钮 -->
+                {% if articles.has_previous %}
+                    <a href="?page=1" class="btn btn-success" >
+                        &laquo; &nbsp1&nbsp
+                    </a>
+                    <span>...</span>
+                    <a href="?page={{ articles.previous_page_number }}" 
+                    class="btn btn-secondary"
+                    >
+                    &nbsp&nbsp{{ articles.previous_page_number }}
+                    </a>
+                {% endif %}
+                &nbsp
+                <!-- 当前页面 -->
+                <span class="current btn btn-danger btn-lg" style="background-color:rgb(0, 141, 226);color: white;">
+                    &nbsp {{ articles.number }}&nbsp
+                </span>
+                &nbsp
+                <!-- 如果不是最末页，则显示下翻按钮 -->
+                {% if articles.has_next %}
+                    <a href="?page={{ articles.next_page_number }}"
+                    class="btn btn-secondary"
+                    >
+                    &nbsp{{ articles.next_page_number }}&nbsp
+                    </a>
+                    <span>...</span>
+                    <a href="?page={{ articles.paginator.num_pages }}"
+                    class="btn btn-success"
+                    >
+                    &nbsp{{ articles.paginator.num_pages }}&nbsp &raquo;
+                    </a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+    
+</div>
+</div>
+</body>

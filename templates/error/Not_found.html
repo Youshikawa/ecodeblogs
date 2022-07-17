@@ -1,0 +1,37 @@
+{% load static %}
+<head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+    <link rel="stylesheet" href="{% static 'css/monokai.css' %}">
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.acwing.com/static/jquery-ui-dist/jquery-ui.min.css">
+    <script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
+    <script src="{% static 'layer/layer.js' %}"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          extensions: ["tex2jax.js"],
+          jax: ["input/TeX", "output/HTML-CSS"],
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true
+          },
+          "HTML-CSS": { fonts: ["TeX"] }
+        });
+      </script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+      </script>
+</head>
+
+<body>
+<div class="nav"> 
+    <a href="/" style="color: black;"><h4 class="title"> &nbsp  &nbsp ecodeblogs</h4></a>
+    <a href="/article/article_create/"><button style = "top:8% ;font-size:100%;" class="btn-primary"> <b style="font-size:175%;">+</b> New </button> </a>    
+</div>
+<div class="container">
+    <div style = "position:relative;width:30%;top:25%;left: 40%;">
+    <img src="/static/image/notfound.png" alt = "photo" style="width: 250px;height: 200px;">
+    <h4 style="color:rgb(156, 156, 156);">  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <strong>404 NotFound ,,-_-,, </strong> </h4>
+    </div>
+</div>
+</body>

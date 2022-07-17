@@ -20,4 +20,4 @@ def index(request):
     # 新版显示文章
     # 显示当前页面的文章
     context = {'articles' : getarticles,}
-    return render(request, 'templates/main_page.html', context)
+    return render(request, 'templates/main_page2.html', context)

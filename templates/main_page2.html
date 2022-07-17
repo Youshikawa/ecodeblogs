@@ -1,0 +1,78 @@
+{% load static %}
+<head>
+	<link rel = "icon" href="/static/image/icon/ecodelab_ico.png">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+	<link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.acwing.com/static/jquery-ui-dist/jquery-ui.min.css">
+	<script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
+	<!-- <link rel="stylesheet" href="{% static 'css/main_page.css' %}"> -->
+	<link rel="stylesheet" href="{% static 'css/main_page2.css' %}">
+</head>
+<body style="margin: 0">
+	<div class="container main_body" style="width: 100%;height: 100%;background-color:rgb(240, 240, 245);">
+		<div id="main_page_1 container" , class="main_page" style="margin: 0;">
+			<div id="main_page_1_title" class="main_page_1_title">
+				<br>
+			</div>
+			<div id="main_page_1_menu" class="main_page_1_menu">
+				<div id="Main_page_01" class="main_page_1_layout">
+					<img src = "static/logo/LOGO.png" style="position:relative;top:5px;width: 250px;height:50px;">
+					
+				</div>
+				<script type="module">
+					import {Main_page_1_menu} from "{% static 'js/src/main_page/main_page_2.js'%}"; 
+                $(document).ready(function(){
+                    let main_page_1_menu = new Main_page_1_menu("Main_page_01");
+                });
+                </script>
+			</div>
+			<div class="main_page_2" style="overflow-y:hidden ;">
+				<div style="background-color: white;border-radius: 1vh;">
+					<h4 style="color:rgb(154, 152, 255);"> <strong>&nbsp &nbsp All Aricles</strong></h4>
+				</div>
+				<div class="main_page_1_articles_item" style="height:100%;overflow-y: auto;overflow-x: hidden;">
+					
+					{% for article in articles %}
+						<div class="article_item">
+							<div class="article_item_userInfo" style="position:relative;;left:10px;">
+								<img src="{{article.author.blogs_user.photo.url}}" style="width:40px;height:40px;border-radius:100vh;">
+								<a href="/user/homepage/{{article.author.blogs_user.uid}}/all/" style="color: black;"><h5 style="display: inline;"><strong>&nbsp &nbsp  {{article.author.blogs_user.open_name |slice:'10'}}</strong></h5>
+							</div>
+							<div class="article_item_content" style="position:relative; left:100px;width: 80%;">
+								<a href="/article/detail/{{article.uid}}">
+								<h4 style="color: black;"><strong>{{article.title}}</strong></h4>
+								{% if article.cover_url%}
+									<img src="{{article.cover_url | default_if_none:'#'}}" style="max-width:200px;max-height:200px;">
+								{% endif %}
+								<h5 style="color: gray;"><strong>{{ article.body|slice:'500' }}....</strong></h5>
+								</a>
+							</div>
+						</div>
+						<hr>
+					{% endfor %}
+					<br>
+					<div class="pagination row" style="width:100%; height:100px;  bottom:0;">
+						<div class="m-auto" style="position:relative;left:47%;">
+							<span class="step-links">
+								{% if articles.has_next %}
+								<a href="?page={{ articles.next_page_number }}"
+								   class="btn_page">
+									<img src="/static/image/main_page/next_page.png" style="width: 20px;height:20px;">
+								</a>
+								{% endif %}
+								{% if articles.has_previous %}
+								<a href="?page={{ articles.previous_page_number }}"
+								   class="btn_page">
+								   <img src="/static/image/main_page/pre_page.png" style="width: 20px;height:20px;">
+								</a>
+								{% endif %}
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 页码导航 -->
+
+</body>
